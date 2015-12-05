@@ -20,7 +20,7 @@ function runAjax(){
           var shortDate = data.Events[i].Date.substring(0,10);
           var shortTime = data.Events[i].Date.substring(11,19);
           // dataArr.push(data.Events[i].Date, data.Events[i].Artists[0].Name);
-          $("#divID").append('</p>' + 'date::: '+ shortDate + ' time:::' + shortTime + ' show::: ' + data.Events[i].Artists[0].Name + ' time::: ' + data.Events[i].Date + ' address::: ' + data.Events[i].Venue.Address + ' city::: ' + data.Events[i].Venue.City + '</p>');
+          $("#divID").append('</p>' + 'date::: '+ shortDate + ' time:::' + shortTime + ' show::: ' + data.Events[i].Artists[0].Name + ' address::: ' + data.Events[i].Venue.Address + ' city::: ' + data.Events[i].Venue.City + '</p>');
         }
       }
       },

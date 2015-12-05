@@ -2,16 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <!-- <link rel="stylesheet" href="styles/style.css" media="screen" title="no title" charset="utf-8"> -->
+    <title>Find Shows Near You</title>
+    <link rel="stylesheet" href="styles/style.css" media="screen" title="no title" charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="scripts/app.js"></script>
     <script type="text/javascript">
     </script>
   </head>
   <body>
+    <header>
+      Input your zip code to find shows near you
+    </header>
     <input id = 'userInput' type="text" name="zipCodeInput" value="input zip code">
-    <input type="button" name="zipButton" value="fetch data" onClick="findShows()">
+    <input type="button" name="zipButton" value="find shows" onClick="findShows()">
 
     <div id = 'bodyDiv'>
     </div>
