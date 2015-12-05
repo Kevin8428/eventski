@@ -1,41 +1,40 @@
 $(document).ready(function(){
 
-$.ajax(getPermitData);
+
+
 
 });//end of document.ready
 
-dataArr = [];
-inputDate = '2015-12-04T20:00:00'
+var inputDate = '2015-12-04T20:00:00';
+var inputZipCode = '60618';
+var userInputZip;
 
-
-////////////////////
-var getPermitData = {
-  type: 'get',
-  url:
-  'http://api.jambase.com/events?zipCode=05482&api_key=yhr4bp7wwbq722r2a6bwef2w',
-  success: function (data){
-    // if(data.Events[0].Date == '2015-12-99T20:00:00'){
-    //   console.log('works, date is '+data.Events[0].Date)
-    // }
-    // console.log(data.Events[0].Artists[0].Name);
-    console.log(data.Events[0].Date);
-    console.log(data);
-
-    for (i=0; i< 10; i++){
-      if(data.Events[i].Date == inputDate){
-        //
-        // console.log('for loop works');
-        // console.log(data.Events[i].Date);
-        // console.log(data.Events[i].Artists[0].Name);
-      dataArr.push(data.Events[i].Date, data.Events[i].Artists[0].Name);
+function runAjax(){
+  $.ajax(
+    {type: 'get',
+    url:
+      'http://api.jambase.com/events?zipCode='+userInputZip+'&api_key=yhr4bp7wwbq722r2a6bwef2w',
+      success: function (data){
+        for (i=0; i< 10; i++){
+          if(data.Events[i].Date == inputDate){
+          var shortDate = data.Events[i].Date.substring(0,10);
+          var shortTime = data.Events[i].Date.substring(11,19);
+          // dataArr.push(data.Events[i].Date, data.Events[i].Artists[0].Name);
+          $("#divID").append('</p>' + 'date::: '+ shortDate + ' time:::' + shortTime + ' show::: ' + data.Events[i].Artists[0].Name + ' time::: ' + data.Events[i].Date + ' address::: ' + data.Events[i].Venue.Address + ' city::: ' + data.Events[i].Venue.City + '</p>');
+        }
+      }
+      },
+      error: function(){
+        console.log('failed');
+      },
     }
-  var json_string = JSON.stringify(dataArr);
-  $("#divID").append(json_string);
-  }
-  },
-  error: function(){
-    console.log('failed');
-  },
+  );
+}
 
+function findShows(){
+  var userZip = document.getElementById("userInput");
+  userInputZip = userZip.value;
+  document.getElementById("divID").innerHTML = userInputZip;
+  runAjax();
 }
 ////////////////////
