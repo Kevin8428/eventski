@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-
-
-
 });//end of document.ready
 
 var userInputZip;
@@ -25,14 +22,22 @@ function runAjax(){
 
           if(shortDate >= userStartDate && shortDate <= userEndDate){
 
-          var element = document.createElement("input");
-          // element.id = 'attendButton';
-          element.type = 'button';
-          element.name = 'attendButton';
-          element.value = 'attend';
-          $("#divID").append(element);
+            var element = document.createElement("input");
+            element.type = 'button';
+            element.name = 'attendButton';
+            element.value = 'attend';
 
-          $("#divID").append('date::: '+ shortDate + ' time:::' + shortTime + ' show::: ' + data.Events[i].Artists[0].Name + ' address::: ' + data.Events[i].Venue.Address + ' city::: ' + data.Events[i].Venue.City + '</p>');
+            // $("#divID").append(element);
+            //
+            // $("#divID").append('date::: '+ shortDate + ' time:::' + shortTime + ' show::: ' + data.Events[i].Artists[0].Name + ' address::: ' + data.Events[i].Venue.Address + ' city::: ' + data.Events[i].Venue.City + '</p>');
+
+            var showsArr = [];
+            showsArr.push(shortDate, shortTime, data.Events[i].Artists[0].Name, data.Events[i].Venue.Address, data.Events[i].Venue.City);
+
+            $('#arrayID').append(element);
+            $('#arrayID').append(showsArr + '</p>');
+
+
         }
       }
       },
@@ -56,6 +61,12 @@ function convertUserDate(value){
     arrAdj = arrAdj.join('-')
     return arrAdj;
 }
+
+
+
+
+
+
 
 function findShows(){
   var zip = document.getElementById("userInput");
