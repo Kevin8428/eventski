@@ -57,11 +57,11 @@ function convertUserDate(value){
 // Date: "2015-12-06T11:00:00" AJAX DATE EXAMPLE
 
 function findShows(){
-  var Zip = document.getElementById("userInput");
+  var zip = document.getElementById("userInput");
   var startDate = document.getElementById("startDate");
   var endDate = document.getElementById("endDate");
 
-  userInputZip = Zip.value;
+  userInputZip = zip.value;
   userStartDate = convertUserDate(startDate.value);
   userEndDate = convertUserDate(endDate.value);
 
