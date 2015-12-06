@@ -42,10 +42,16 @@ function runAjax(){
 
 
 function convertUserDate(value){
-    var arr = value.split("-").reverse();
     var arrAdj = [];
+    if(value.indexOf('-') === -1){
+        var arr = value.split('/').reverse();
+    }
+    else {
+        var arr = value.split("-").reverse();
+    }
     arrAdj.push(arr[0], arr[2], arr[1]);
-    return arrAdj.join('-');
+    arrAdj = arrAdj.join('-')
+    return arrAdj;
 }
 
 // Date: "2015-12-06T11:00:00" AJAX DATE EXAMPLE
