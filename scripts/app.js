@@ -5,10 +5,11 @@ $(document).ready(function(){
 
 });//end of document.ready
 
-var inputDate = '2015-12-06';
-var testDate;
+// var inputDate = '2015-12-06';
+// var testDate;
 var userInputZip;
-var userInputDate;
+var userStartDate;
+var userEndDate;
 
 function runAjax(){
   $.ajax(
@@ -25,9 +26,9 @@ function runAjax(){
           var shortDate = data.Events[i].Date.substring(0,10);
           var shortTime = data.Events[i].Date.substring(11,19);
           console.log(shortDate);
-          console.log(userInputDate);
+          console.log(userStartDate);
 
-          if(shortDate == userInputDate){
+          if(shortDate >= userStartDate && shortDate <= userEndDate){
           $("#divID").append('</p>' + 'date::: '+ shortDate + ' time:::' + shortTime + ' show::: ' + data.Events[i].Artists[0].Name + ' address::: ' + data.Events[i].Venue.Address + ' city::: ' + data.Events[i].Venue.City + '</p>');
         }
       }
@@ -50,10 +51,14 @@ function convertUserDate(value){
 // Date: "2015-12-06T11:00:00" AJAX DATE EXAMPLE
 
 function findShows(){
-  var userZip = document.getElementById("userInput");
-  var userDate = document.getElementById("userDate");
-  userInputZip = userZip.value;
-  userInputDate = convertUserDate(userDate.value);
+  var Zip = document.getElementById("userInput");
+  var startDate = document.getElementById("startDate");
+  var endDate = document.getElementById("endDate");
+
+  userInputZip = Zip.value;
+  userStartDate = convertUserDate(startDate.value);
+  userEndDate = convertUserDate(endDate.value);
+
   runAjax();
 }
 ////////////////////
