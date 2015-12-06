@@ -41,9 +41,13 @@ function runAjax(){
 
 
 function convertUserDate(value){
-    var arr = value.split("-").reverse().join('-');
-    return arr;
+    var arr = value.split("-").reverse();
+    var arrAdj = [];
+    arrAdj.push(arr[0], arr[2], arr[1]);
+    return arrAdj.join('-');
 }
+
+// Date: "2015-12-06T11:00:00" AJAX DATE EXAMPLE
 
 function findShows(){
   var userZip = document.getElementById("userInput");
