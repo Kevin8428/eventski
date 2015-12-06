@@ -5,6 +5,7 @@ $(document).ready(function(){
 var userInputZip;
 var userStartDate;
 var userEndDate;
+var showsArr = [];
 
 function runAjax(){
   $.ajax(
@@ -26,16 +27,20 @@ function runAjax(){
             element.type = 'button';
             element.name = 'attendButton';
             element.value = 'attend';
+            element.onclick = function (){
+              addShow();
+            };
 
             // $("#divID").append(element);
             //
             // $("#divID").append('date::: '+ shortDate + ' time:::' + shortTime + ' show::: ' + data.Events[i].Artists[0].Name + ' address::: ' + data.Events[i].Venue.Address + ' city::: ' + data.Events[i].Venue.City + '</p>');
 
-            var showsArr = [];
-            showsArr.push(shortDate, shortTime, data.Events[i].Artists[0].Name, data.Events[i].Venue.Address, data.Events[i].Venue.City);
+            var tempArr = [];
+            tempArr.push(shortDate, shortTime, data.Events[i].Artists[0].Name, data.Events[i].Venue.Address, data.Events[i].Venue.City);
+            showsArr.push(tempArr);
 
             $('#arrayID').append(element);
-            $('#arrayID').append(showsArr + '</p>');
+            $('#arrayID').append(tempArr + '</p>');
 
 
         }
@@ -48,6 +53,9 @@ function runAjax(){
   )
 }
 
+function addShow(){
+  alert ('show added');
+}
 
 function convertUserDate(value){
     var arrAdj = [];
